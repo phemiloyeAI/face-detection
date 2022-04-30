@@ -6,7 +6,7 @@ from PIL import Image
 from retinaface.pre_trained_models import get_model
 from retinaface.utils import vis_annotations
 import torch
-
+ 
 st.set_option("deprecation.showfileUploaderEncoding", False)
 
 
