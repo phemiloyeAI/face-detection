@@ -1,3 +1,4 @@
+-f https://download.pytorch.org/whl/torch_stable.html
 albumentations==1.0.0
 altair==4.2.0
 argon2-cffi==21.3.0
@@ -89,8 +90,8 @@ tifffile==2022.4.28
 tinycss2==1.1.1
 toml==0.10.2
 toolz==0.11.2
-torch==1.9.0
-torchvision==0.10.0
+torch==1.9.0+cpu
+torchvision==0.10.0+cpu
 tornado==6.1
 traitlets==5.1.1
 typing_extensions==4.2.0
