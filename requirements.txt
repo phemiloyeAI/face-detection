@@ -1,9 +1,9 @@
-https://download.pytorch.org/whl/cpu/torch-1.9.0%2Bcpu-cp39-cp39-win_amd64.whl
-https://download.pytorch.org/whl/cpu/torchvision-0.10.0%2Bcpu-cp39-cp39-win_amd64.whl
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.9.0+cpu
+torchvision==0.10.0+cpu
 albumentations
 iglovikov_helper_functions
 numpy
 pillow
 streamlit
 retinaface_pytorch
-
