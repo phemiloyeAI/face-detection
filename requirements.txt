@@ -6,3 +6,4 @@
 # pillow
 streamlit
 retinaface_pytorch  
+stqdm
