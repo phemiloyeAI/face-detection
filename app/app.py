@@ -33,11 +33,11 @@ if menu == "Image":
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg"])
     if uploaded_file is not None:
         image = np.array(Image.open(uploaded_file))
-        with st.spinner("Processing image"):
+        with st.spinner("Processing image progress"):
             with torch.no_grad():
                 annotations = model.predict_jsons(image, confidence/100)
             if not annotations[0]["bbox"]:
-                st.write("No faces detected")
+                pass
             else:
                 visualized_image = vis_annotations(image, annotations)
                 st.success("Number of Detected Faces: "+str(len(annotations)))
@@ -54,7 +54,7 @@ if menu == "Video":
 
             cap = cv2.VideoCapture(tfile.name)
             st.write("\n")
-            st.write("***Processing video, this may take a while to finish.***")
+            st.write("***Processing video progress.***")
        
             width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -65,6 +65,7 @@ if menu == "Video":
             out_path = os.path.join(os.getcwd(), "output.webm")
             writer = cv2.VideoWriter(out_path, fourcc, fps, (width, height))
             num_faces = 0  
+
             for j in stqdm(range(length+1)):
                 ret, frame = cap.read()
                 if not ret:
@@ -75,7 +76,7 @@ if menu == "Video":
                     with torch.no_grad():
                         annotations = model.predict_jsons(frame, confidence/100)
                     if not annotations[0]["bbox"]:
-                        st.write("No faces detected")
+                        pass
                     else:
                         num_faces += len(annotations)
                         visualized_image = vis_annotations(frame, annotations)
@@ -88,5 +89,5 @@ if menu == "Video":
 
             video_file = open(out_path, "rb")
             video_bytes = video_file.read()
-
+            
             st.video(video_bytes)
